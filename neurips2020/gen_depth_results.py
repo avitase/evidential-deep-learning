@@ -572,8 +572,9 @@ def predict(method, model, x, n_samples=10):
         mu, v, alpha, beta = tf.split(outputs, 4, axis=-1)
         
         # *** CHANGE ME!? *** 
-        sigma = tf.sqrt(beta / (v * (alpha - 1)))
+        # sigma = tf.sqrt(beta / (v * (alpha - 1)))
         # sigma = 1. / tf.sqrt(v)
+        sigma = tf.sqrt(beta * (1 + v) / v / alpha)
         return mu, sigma
 
     elif method == Model.Ensemble:
