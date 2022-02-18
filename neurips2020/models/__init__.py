@@ -24,7 +24,7 @@ def get_correct_model(dataset, trainer):
 def load_depth_model(path, compile=False):
     import glob
     import tensorflow as tf
-    import edl
+    import evidential_deep_learning as edl
 
     model_paths = glob.glob(path)
     if model_paths == []:
